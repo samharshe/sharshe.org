@@ -67,7 +67,7 @@ const removeInfiniteScroll = function(){
 
 window.addEventListener("scroll", handleInfiniteScroll);
 
-var nums = shuffle(Array.from({length: 174}, (_, i) => i + 1))
+var nums = shuffle(Array.from({length: 208}, (_, i) => i + 1))
 
 var throttleTimer;
 
