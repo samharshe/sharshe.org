@@ -32,6 +32,26 @@
     --size-19: 924px;
 }
 
+* {
+    font-family: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: var(--size-6);
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 75%;
+    margin: auto;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--size-6);
+    opacity: 100%;
+}
+
 #photo {
     width: 75%;
     display: flex;
@@ -39,35 +59,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin: auto;
-    padding-top: var(--size-11);
-}
-
-#text {
-    display: flex;
-    flex-direction: row;
-    width: 75%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: var(--size-6);
-    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, sans-serif; ;
-    justify-content: space-between;
-    padding: var(--size-6);
-}
-
-h1 {
-    text-orientation: sideways;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif; 
-    text-transform: uppercase;
-    transform: rotate(270deg);
-    font-size: var(--size-9);
-}
-
-#title {
-    display: flex;
-    flex-direction: column;
+    padding-top: var(--size-6);
 }
 
 .transparent {
@@ -75,9 +67,9 @@ h1 {
     transition: opacity 0.2s;
 }
 
-#about {
-    opacity: 100%;
-    transition: opacity 0.2s;
+.gallery-card {
+    display: flex;
+    flex-direction: column;
 }
 
 p {
