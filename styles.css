@@ -33,6 +33,7 @@ span {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 0.5em;
+    margin-bottom: 1.5em;
 }
 
 #list a {
