@@ -37,7 +37,6 @@ span {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 0.5em;
-    margin-bottom: 1.5em;
 }
 
 #list a {
@@ -77,13 +76,23 @@ span {
 }
 
 #sonnet-text {
-    margin: 2em 0;
+    margin: 1em 0;
 }
 
 #footer {
+    margin: auto;
+    padding: 0.5em 0;
+}
+
+#nav {
     border-top: 1px solid black;
-    margin: 1em auto;
-    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#hover-title, #nav {
+    padding-top: 1em;
 }
 
 #hover-title {
@@ -91,11 +100,13 @@ span {
     text-transform: capitalize;
 }
 
-#nav {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+@media (hover: hover) {
+    #hover-title {
+        border-top: 1px solid black;
+        padding-top: 1em;
+    }
 }
+
 
 #home {
     font-size: 1.2em;
