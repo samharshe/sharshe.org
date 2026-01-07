@@ -1,0 +1,59 @@
+body {
+    background-color: #fafafa;
+    color: #111;
+    font-family: 'EB Garamond';
+    margin: 30ch auto;
+    max-width: 60ch;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* index.html specific */
+span {
+    display: block;
+    text-align: right;
+    margin-top: 2ch;
+}
+
+/* sonnets.html specific */
+#list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
+    gap: 0.5em;
+}
+
+#list a {
+    display: block;
+}
+
+#sonnet {
+    display: none;
+}
+
+#sonnet.active {
+    display: block;
+}
+
+#sonnet-text {
+    margin: 2em 0;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 1.2em;
+}
