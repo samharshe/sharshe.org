@@ -22,9 +22,13 @@ function showList() {
     ).join('');
 
     document.getElementById('main-title').style.display = 'block';
+    document.getElementById('nav').style.display = 'none';
+    window.scrollTo(0, 0);
 }
 
 function showSonnet(index) {
+    document.getElementById('nav').style.display = 'flex';
+
     if (index < 0 || index >= sonnets.length) return;
 
     document.getElementById('list').style.display = 'none';
