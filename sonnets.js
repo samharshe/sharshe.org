@@ -25,7 +25,6 @@ function showList() {
     document.getElementById('footer-title').style.display = 'block';
     document.getElementById('nav').style.display = 'none';
 
-    // Add hover listeners for showing sonnet titles
     document.querySelectorAll('#list a').forEach(link => {
         link.addEventListener('mouseenter', (e) => {
             const index = parseInt(e.target.dataset.sonnet);
