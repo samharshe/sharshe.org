@@ -18,22 +18,34 @@ function showList() {
 
     const list = document.getElementById('list');
     list.innerHTML = sonnets.map((sonnet, i) =>
-        `<a href="#${i + 1}">${i + 1}</a>`
+        `<a href="#${i + 1}" data-sonnet="${i}">${i + 1}</a>`
     ).join('');
 
     document.getElementById('main-title').style.display = 'block';
+    document.getElementById('footer-title').style.display = 'block';
     document.getElementById('nav').style.display = 'none';
-    window.scrollTo(0, 0);
+
+    // Add hover listeners for showing sonnet titles
+    document.querySelectorAll('#list a').forEach(link => {
+        link.addEventListener('mouseenter', (e) => {
+            const index = parseInt(e.target.dataset.sonnet);
+            document.getElementById('footer-title').textContent = sonnets[index][0];
+        });
+        link.addEventListener('mouseleave', () => {
+            document.getElementById('footer-title').textContent = '';
+        });
+    });
 }
 
 function showSonnet(index) {
-    document.getElementById('nav').style.display = 'flex';
-
     if (index < 0 || index >= sonnets.length) return;
 
     document.getElementById('list').style.display = 'none';
     document.getElementById('main-title').style.display = 'none';
     document.getElementById('sonnet').classList.add('active');
+
+    document.getElementById('footer-title').style.display = 'none';
+    document.getElementById('nav').style.display = 'flex';
 
     document.getElementById('sonnet-title').textContent = `Sonnet ${index + 1}`;
     document.getElementById('sonnet-text').innerHTML =

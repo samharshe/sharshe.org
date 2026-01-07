@@ -54,7 +54,7 @@ span {
     font-family: "IM Fell English";
 }
 
-#sonnet, #nav {
+#sonnet, #footer {
     width: 60ch;
 }
 
@@ -66,12 +66,22 @@ span {
     margin: 2em 0;
 }
 
-#nav {
+#footer {
     border-top: 1px solid black;
+    padding: 1em 0;
+    margin: 1em 0;
+    min-height: 2em;
+}
+
+#footer-title {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#nav {
     display: flex;
     justify-content: space-between;
-    padding: 0.5em 0;
-    margin: 2em 0;
+    width: 100%;
 }
 
 #home {
