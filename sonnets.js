@@ -22,16 +22,16 @@ function showList() {
     ).join('');
 
     document.getElementById('main-title').style.display = 'block';
-    document.getElementById('footer-title').style.display = 'block';
+    document.getElementById('hover-title').style.display = 'block';
     document.getElementById('nav').style.display = 'none';
 
     document.querySelectorAll('#list a').forEach(link => {
         link.addEventListener('mouseenter', (e) => {
             const index = parseInt(e.target.dataset.sonnet);
-            document.getElementById('footer-title').textContent = sonnets[index][0];
+            document.getElementById('hover-title').textContent = sonnets[index][0];
         });
         link.addEventListener('mouseleave', () => {
-            document.getElementById('footer-title').textContent = '';
+            document.getElementById('hover-title').textContent = '';
         });
     });
 }
@@ -43,7 +43,7 @@ function showSonnet(index) {
     document.getElementById('main-title').style.display = 'none';
     document.getElementById('sonnet').classList.add('active');
 
-    document.getElementById('footer-title').style.display = 'none';
+    document.getElementById('hover-title').style.display = 'none';
     document.getElementById('nav').style.display = 'flex';
 
     document.getElementById('sonnet-title').textContent = `Sonnet ${index + 1}`;
