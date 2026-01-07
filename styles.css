@@ -27,7 +27,7 @@ span {
 /* sonnets.html specific */
 #list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
+    grid-template-columns: repeat(10, 1fr);
     gap: 0.5em;
 }
 
@@ -39,8 +39,19 @@ span {
     display: none;
 }
 
+#main-title {
+    margin: auto;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 2em 0;
+}
+
+.im-fell-english {
+    font-family: "IM Fell English";
+}
+
 #sonnet, #nav {
-    width: 45ch;
+    width: 60ch;
 }
 
 #sonnet.active {

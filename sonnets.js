@@ -18,14 +18,17 @@ function showList() {
 
     const list = document.getElementById('list');
     list.innerHTML = sonnets.map((sonnet, i) =>
-        `<a href="#${i + 1}">${i + 1}. ${sonnet[0]}</a>`
+        `<a href="#${i + 1}">${i + 1}</a>`
     ).join('');
+
+    document.getElementById('main-title').style.display = 'block';
 }
 
 function showSonnet(index) {
     if (index < 0 || index >= sonnets.length) return;
 
     document.getElementById('list').style.display = 'none';
+    document.getElementById('main-title').style.display = 'none';
     document.getElementById('sonnet').classList.add('active');
 
     document.getElementById('sonnet-title').textContent = `Sonnet ${index + 1}`;
