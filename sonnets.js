@@ -55,6 +55,15 @@ function showSonnet(index) {
 
     document.getElementById('prev').style.visibility = index > 0 ? 'visible' : 'hidden';
     document.getElementById('next').style.visibility = index < sonnets.length - 1 ? 'visible' : 'hidden';
+
+    // Reset fade animation for title only
+    const title = document.getElementById('sonnet-title');
+    title.style.animation = 'none';
+    title.style.opacity = '1';
+    // Force reflow
+    void title.offsetWidth;
+    // Restart animation
+    title.style.animation = '';
 }
 
 window.addEventListener('hashchange', () => {
@@ -69,6 +78,20 @@ window.addEventListener('hashchange', () => {
 document.getElementById('home').addEventListener('click', (e) => {
     e.preventDefault();
     window.location.hash = '';
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+        const prevButton = document.getElementById('prev');
+        if (prevButton.style.visibility === 'visible') {
+            window.location.hash = prevButton.href.split('#')[1];
+        }
+    } else if (e.key === 'ArrowRight') {
+        const nextButton = document.getElementById('next');
+        if (nextButton.style.visibility === 'visible') {
+            window.location.hash = nextButton.href.split('#')[1];
+        }
+    }
 });
 
 loadSonnets().catch(err => {

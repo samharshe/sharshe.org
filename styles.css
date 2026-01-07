@@ -108,7 +108,7 @@ span {
 
     #sonnet-title, #nav {
         opacity: 1;
-        animation: fadeOut 0.3s ease-in-out 0.5s forwards;
+        animation: fadeOut 1s ease-in-out 0.5s forwards;
         transition: opacity 0.3s ease-in-out;
     }
 
