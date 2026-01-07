@@ -39,6 +39,10 @@ span {
     display: none;
 }
 
+#sonnet, #nav {
+    width: 45ch;
+}
+
 #sonnet.active {
     display: block;
 }
@@ -48,9 +52,15 @@ span {
 }
 
 #nav {
+    border-top: 1px solid black;
     display: flex;
     justify-content: space-between;
+    padding: 0.5em 0;
     margin: 2em 0;
+}
+
+#home {
+    font-size: 1.2em;
 }
 
 h1 {

@@ -48,7 +48,7 @@ window.addEventListener('hashchange', () => {
     }
 });
 
-document.getElementById('back').addEventListener('click', (e) => {
+document.getElementById('home').addEventListener('click', (e) => {
     e.preventDefault();
     window.location.hash = '';
 });
