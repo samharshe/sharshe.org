@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shakespeare's Sonnets</title>
+    <link rel="icon" type="image/png" href="files/SH.png">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #fafafa;
+            color: #111;
+        }
+        #container {
+            font-family: 'EB Garamond';
+            margin: 30ch auto;
+            max-width: 60ch;
+            line-height: 1.5;
+            font-size: 18px;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
+            gap: 0.5em;
+        }
+        #list a {
+            display: block;
+        }
+        #sonnet {
+            display: none;
+        }
+        #sonnet.active {
+            display: block;
+        }
+        #sonnet-text {
+            margin: 2em 0;
+        }
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 2em 0;
+        }
+        h1 {
+            font-weight: normal;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="list"></div>
+        <div id="sonnet">
+            <div id="nav">
+                <a href="#" id="back">← all sonnets</a>
+                <span>
+                    <a href="#" id="prev">← prev</a>
+                    <a href="#" id="next">next →</a>
+                </span>
+            </div>
+            <h1 id="sonnet-title"></h1>
+            <div id="sonnet-text"></div>
+        </div>
+    </div>
+    <script>
+        let sonnets = [];
+
+        async function loadSonnets() {
+            const response = await fetch('data/sonnets.json');
+            sonnets = await response.json();
+
+            const hash = window.location.hash.slice(1);
+            if (hash && !isNaN(hash)) {
+                showSonnet(parseInt(hash) - 1);
+            } else {
+                showList();
+            }
+        }
+
+        function showList() {
+            document.getElementById('list').style.display = 'grid';
+            document.getElementById('sonnet').classList.remove('active');
+
+            const list = document.getElementById('list');
+            list.innerHTML = sonnets.map((sonnet, i) =>
+                `<a href="#${i + 1}">${i + 1}. ${sonnet[0]}</a>`
+            ).join('');
+        }
+
+        function showSonnet(index) {
+            if (index < 0 || index >= sonnets.length) return;
+
+            document.getElementById('list').style.display = 'none';
+            document.getElementById('sonnet').classList.add('active');
+
+            document.getElementById('sonnet-title').textContent = `Sonnet ${index + 1}`;
+            document.getElementById('sonnet-text').innerHTML =
+                sonnets[index].map(line => `${line}<br>`).join('');
+
+            document.getElementById('prev').href = index > 0 ? `#${index}` : '#';
+            document.getElementById('next').href = index < sonnets.length - 1 ? `#${index + 2}` : '#';
+
+            document.getElementById('prev').style.visibility = index > 0 ? 'visible' : 'hidden';
+            document.getElementById('next').style.visibility = index < sonnets.length - 1 ? 'visible' : 'hidden';
+        }
+
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash && !isNaN(hash)) {
+                showSonnet(parseInt(hash) - 1);
+            } else {
+                showList();
+            }
+        });
+
+        document.getElementById('back').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.hash = '';
+        });
+
+        loadSonnets().catch(err => {
+            document.getElementById('container').innerHTML =
+                '<p>Error loading sonnets. Make sure you\'re running a local server (e.g., python3 -m http.server)</p>';
+        });
+    </script>
+</body>
+</html>
